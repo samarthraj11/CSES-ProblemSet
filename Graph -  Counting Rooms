@@ -1,0 +1,106 @@
+#include <bits/stdc++.h>
+#define ll    long long
+#define pb    push_back
+#define ld    long double
+#define sz    size()
+#define lala  for(ll i=0;i<n;i++)
+#define pll   pair<ll,ll>
+#define ed    "\n"
+#define ct    cout
+#define m_p   make_pair
+#define vi    vector<ll>
+#define vc    vector<char>
+#define ff    first
+#define ss    second
+
+using namespace std;
+
+void bahut_tezz()
+{
+    std::ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+}
+
+void aur_bhai(vector<vector<char>>&t,int i,int j,int n,int m)
+{
+    if(i<0 || j<0 || i>=n || j>=m)
+    {
+        return ;
+    }
+
+    if(t[i][j] != '.')
+    {
+        return ;
+    }
+
+    t[i][j]='#';
+
+    aur_bhai(t,i+1,j,n,m);
+    aur_bhai(t,i-1,j,n,m);
+    aur_bhai(t,i,j-1,n,m);
+    aur_bhai(t,i,j+1,n,m);
+}
+
+
+void jai_bajrangbali()
+{
+    ll k,n,m,x,y,cnt=0,res=0,mx=1;
+    ll sum=0;
+    bool ash=false;
+    string s;
+    cin>>n>>m;
+    //ll a[n];
+
+    vector<vector<char>> t;
+    char cc;
+    vc v;
+    for(ll i=0;i<n;i++)
+    {
+        for(ll j=0;j<m;j++)
+        {
+            cin>>cc;
+            v.pb(cc);
+
+
+
+
+        }
+
+        t.pb(v);
+        v.clear();
+    }
+
+
+   for(ll i=0;i<n;i++)
+    {
+        for(ll j=0;j<m;j++)
+        {
+           if(t[i][j]=='.')
+           {
+
+               aur_bhai(t,i,j,n,m);
+               cnt++;
+           }
+        }
+
+
+
+    }
+
+    ct<<cnt<<ed;
+
+
+}
+
+int main()
+{
+    bahut_tezz();
+    long long t;
+    //cin>>t;
+    t=1;
+    while(t--)jai_bajrangbali();
+
+    return 0;
+}
+
