@@ -1,0 +1,94 @@
+#include <bits/stdc++.h>
+#define ll    long long
+#define pb    push_back
+#define ld    long double
+#define sz    size()
+#define lala  for(ll i=0;i<n;i++)
+#define pll   pair<ll,ll>
+#define ed    "\n"
+#define ct    cout
+#define m_p   make_pair
+#define vi    vector<ll>
+#define vc    vector<char>
+#define ff    first
+#define ss    second
+
+using namespace std;
+
+void bahut_tezz()
+{
+    std::ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+}
+
+void aur_bhai(int i,vector<int>& gya,vector<int> v[])
+{
+    gya[i]=1;
+    for(auto it:v[i])
+    {
+        if(gya[it]==0)
+        {
+            aur_bhai(it,gya,v);
+        }
+    }
+}
+
+
+void jai_bajrangbali()
+{
+    ll k,n,m,x,y,cnt=0,res=0,mx=1;
+    ll sum=0;
+    bool ash=false;
+    string s;
+    cin>>n>>m;
+    //ll a[n];
+    vector<int> v[n+1];
+    for(ll i=0;i<m;i++)
+    {
+        cin>>x>>y;
+        v[x].pb(y);
+        v[y].pb(x);
+    }
+
+    vector<int> gya(n+1,0);
+    vi w;
+    for(ll i=1;i<=n;i++)
+    {
+       if(gya[i]==0)
+       {
+           cnt++;
+           w.pb(i);
+           aur_bhai(i,gya,v);
+       }
+
+
+    }
+
+    if(cnt==1)
+    {
+        ct<<0<<ed;
+        return ;
+    }
+
+    ct<<cnt-1<<ed;
+
+    for(ll i=0;i<w.sz-1;i++)
+    {
+        ct<<w[i]<< " "<<w[i+1]<<ed;
+    }
+
+    ct<<ed;
+}
+
+int main()
+{
+    bahut_tezz();
+    long long t;
+    //cin>>t;
+    t=1;
+    while(t--)jai_bajrangbali();
+
+    return 0;
+}
+
