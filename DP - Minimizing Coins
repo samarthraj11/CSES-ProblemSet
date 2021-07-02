@@ -1,19 +1,21 @@
 // bas har ka sum banane ka min dekhna h jisse wo sum aa skta h 
 
 #include <bits/stdc++.h>
-#define ll    long long
-#define pb    push_back
-#define ld    long double
-#define sz    size()
-#define lala  for(ll i=0;i<n;i++)
-#define pll   pair<ll,ll>
-#define ed    "\n"
-#define ct    cout
-#define m_p   make_pair
-#define vi    vector<ll>
-#define vc    vector<char>
-#define ff    first
-#define ss    second
+#define ll            long long
+#define pb            push_back
+#define ld            long double
+#define sz            size()
+#define lala          for(ll i=0;i<n;i++)
+#define pll           pair<ll,ll>
+#define ed            "\n"
+#define ct            cout
+#define m_p           make_pair
+#define vi            vector<ll>
+#define vvi           vector<pll>
+#define ff            first
+#define ss            second
+#define mod           1000000007
+
 
 using namespace std;
 
@@ -31,39 +33,37 @@ void jai_bajrangbali()
     ll sum=0;
     bool ash=false;
     string s;
-    cin>>n>>sum;
+
+    cin>>n>>k;
     ll a[n];
     lala
     {
         cin>>a[i];
     }
 
+    vi v(k+1,INT_MAX);
 
-//    vi tt(sum+1,1e9);
-//    tt[0]=0;
+    v[0]=0;
 
-    ll tt[sum+1];
-    for(ll i=0;i<sum+1;i++)
-    {
-        tt[i]=1e9;
-    }
-
-
-    tt[0]=0;
-
-    for(ll i=0;i<sum+1;i++)
+    for(ll i=1;i<k+1;i++)
     {
         for(ll j=0;j<n;j++)
         {
-            if(i-a[j]>= 0)
+            if(i >= a[j])
             {
-                tt[i]=min(tt[i],1 + tt[i-a[j]]);
+                v[i] = min(v[i], 1 + v[i-a[j]]);
             }
         }
     }
 
-    ct<<(tt[sum]==1e9 ? -1 : tt[sum]) <<ed;
+//    for(auto i:v)
+//    {
+//        ct<<i<< " ";
+//    }
+//    ct<<ed;
 
+
+    ct<< ((v[k] == INT_MAX) ? -1 : v[k])<<ed;
 
 }
 
@@ -76,4 +76,5 @@ int main()
 
     return 0;
 }
+
 
